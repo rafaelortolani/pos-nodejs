@@ -16,13 +16,13 @@ export async function create (request, h){
 }
 
 export async function detail(request, h){
-    const{id} = request.params;
-    return tagsDAO.findById(id);
+    const{postId, id} = request.params;
+    return tagsDAO.findById(postId, id);
 }
 
 export async function update(request, h){
-    const{payload, params:{id}} = request;
-    return await tagsDAO.update(id, payload);
+    const{payload, params:{postId, id}} = request;
+    return await tagsDAO.update(postId, id, payload);
 }
 
 export async function destroy(request, h){

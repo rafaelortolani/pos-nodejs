@@ -11,13 +11,13 @@ export default class TagsDAO{
         return Tag.create(data);
     }
 
-    findById(id){
-        return Tag.findByPk(id);
+    findById(postId,id){
+        return Tag.findOne({where: {postId, id}});
     }
 
-    async update(id, tag){
+    async update(postId, id, tag){
         await Tag.update(tag, {where :{id}})
-        return await this.findById(id);
+        return await this.findById(postId, id);
     }
 
     destroy(id){
