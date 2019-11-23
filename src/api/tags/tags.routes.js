@@ -4,12 +4,17 @@ import * as Schemas from './tags.schemas';
 export default [
     {
         method:'GET',
-        path:'/posts/{postid}/tags',
-        handler: list
+        path:'/posts/{postId}/tags',
+        handler: list,
+        config:{
+            validate:{
+                params:Schemas.params
+            }
+        }
     },
     {
         method:'GET',
-        path:'/posts/{postid}/tags/{id}',
+        path:'/posts/{postId}/tags/{id}',
         handler: detail,
         config:{
             validate:{
@@ -19,27 +24,29 @@ export default [
     },
     {
         method:'POST',
-        path:'/posts/{postid}/tags',
+        path:'/posts/{postId}/tags',
         handler:create,
         config:{
             validate:{
+                params:Schemas.params,
                 payload:Schemas.payload
             }
         }
     },
     {
         method:'PUT',
-        path:'/posts/{postid}/tags/{id}',
+        path:'/posts/{postId}/tags/{id}',
         handler: update,
         config:{
             validate:{
+                params:Schemas.params,
                 payload:Schemas.update
             }
         }
     },
     {
         method:'DELETE',
-        path:'/posts/{postid}/tags/{id}',
+        path:'/posts/{postId}/tags/{id}',
         handler: destroy,
         config:{
             validate:{
