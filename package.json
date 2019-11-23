@@ -2,7 +2,7 @@
   "name": "projects",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "src/index.js",
   "dependencies": {
     "@hapi/hapi": "^18.4.0",
     "abbrev": "^1.1.1",
