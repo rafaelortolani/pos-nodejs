@@ -1,31 +1,31 @@
-import PostsDAO from './posts.dao';
+import TagsDAO from './tags.dao';
 import {CREATED, NO_CONTENT} from 'http-status'
 import { pathToFileURL } from 'url';
 
-const postsDAO = new PostsDAO();
+const tagsDAO = new TagsDAO();
 
 export async function list(request, h){
-    return await postsDAO.findAll();
+    return await tagsDAO.findAll();
 }
 
 export async function create (request, h){
     const {payload} = request;
-    const post = await postsDAO.create(payload);
+    const tags = await tagsDAO.create(payload);
 
-    return h.response(post).code(CREATED);
+    return h.response(tags).code(CREATED);
 }
 
 export async function detail(request, h){
     const{id} = request.params;
-    return postsDAO.findById(id);
+    return tagsDAO.findById(id);
 }
 
 export async function update(request, h){
     const{payload, params:{id}} = request;
-    return await postsDAO.update(id, payload);
+    return await tagsDAO.update(id, payload);
 }
 
 export async function destroy(request, h){
     const{id} = request.params;
-    return h.response( await postsDAO.destroy(id)).code(NO_CONTENT);
+    return h.response( await tagsDAO.destroy(id)).code(NO_CONTENT);
 }
